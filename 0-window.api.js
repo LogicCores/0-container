@@ -18,7 +18,8 @@ exports.forLib = function (LIB) {
 
             var state = {
                 domNode: null,
-                components: null
+                components: null,
+                page: null
             };
             LIB._.merge(state, LIB._.cloneDeep(defaults));
 
@@ -36,6 +37,14 @@ exports.forLib = function (LIB) {
             self.setComponents = function (components) {
                 state.components = components;
                 self.emit("changed:components", components);
+            }
+
+            self.setPageContext = function (context) {
+                state.page = context;
+            }
+
+            self.getPageContext = function () {
+                return state.page;
             }
 
             self.destroy = function () {
