@@ -19,9 +19,13 @@ exports.forLib = function (LIB) {
             			var componentId = componentElement.attr("data-component-id");
             			components[componentId] = {
             			    id: componentId,
-            			    impl: componentElement.attr("data-component-impl") || null,
+            			    impl: componentElement.attr("data-component-impl") || "",
             			    domNode: componentElement
             			};
+            			// HACK: This should be fixed on server.
+            			if (components[componentId].impl === "null") {
+            			    components[componentId].impl = "";
+            			}
             		});
             		return components;
                 }
