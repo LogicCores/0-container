@@ -22,12 +22,21 @@ exports.forLib = function (LIB) {
                 page: null
             };
             LIB._.merge(state, LIB._.cloneDeep(defaults));
-
+/*
             self.setDomNode = function (domNode) {
                 if (state.domNode !== domNode) {
                     state.domNode = domNode;
                     self.emit("changed:domNode", domNode);
                 }
+            }
+*/
+            self.renderTo = function (domNode) {
+                state.domNode = domNode;
+                self.emit("changed:domNode", domNode);
+            }
+
+            self.hide = function () {
+                self.emit("hide");
             }
 
             self.getDomNode = function () {

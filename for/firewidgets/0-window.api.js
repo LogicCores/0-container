@@ -20,6 +20,7 @@ exports.forLib = function (LIB) {
             			components[componentId] = {
             			    id: componentId,
             			    impl: componentElement.attr("data-component-impl") || "",
+            			    container: context,
             			    domNode: componentElement
             			};
             			// HACK: This should be fixed on server.
@@ -29,7 +30,7 @@ exports.forLib = function (LIB) {
             		});
             		return components;
                 }
-                
+
                 context.setComponents(scanForComponents());
             });
         }
