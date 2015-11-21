@@ -32,7 +32,7 @@ exports.forLib = function (LIB) {
 */
             self.renderTo = function (domNode) {
                 state.domNode = domNode;
-                self.emit("changed:domNode", domNode);
+//                self.emit("changed:domNode", domNode);
             }
 
             self.hide = function () {
@@ -42,12 +42,12 @@ exports.forLib = function (LIB) {
             self.getDomNode = function () {
                 return state.domNode;
             }
-
+/*
             self.setComponents = function (components) {
                 state.components = components;
                 self.emit("changed:components", components);
             }
-
+*/
             self.setPageContext = function (context) {
                 state.page = context;
             }

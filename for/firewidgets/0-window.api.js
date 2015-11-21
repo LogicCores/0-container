@@ -10,6 +10,7 @@ exports.forLib = function (LIB) {
         var FireWidgetsContainer = function () {
             var self = this;
 
+/*
             context.on("changed:domNode", function (domNode) {
                 
                 function scanForComponents () {
@@ -33,6 +34,7 @@ exports.forLib = function (LIB) {
 
                 context.setComponents(scanForComponents());
             });
+*/
         }
 
         return new FireWidgetsContainer(context);
