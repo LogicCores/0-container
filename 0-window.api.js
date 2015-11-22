@@ -62,6 +62,8 @@ exports.forLib = function (LIB) {
                 state.domNode = null;
                 state.components = null;
             }
+
+            self.setMaxListeners(50);
         }
         Context.prototype = Object.create(LIB.EventEmitter.prototype);
         Context.prototype.contexts = contexts;
