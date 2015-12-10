@@ -1,0 +1,10 @@
+{
+  "name": "0-container-for-travis-ci",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "js-yaml": "^3.4.6",
+    "travis-encrypt": "^1.1.2",
+    "waitfor": "^0.1.3"
+  }
+}
