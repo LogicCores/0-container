@@ -1,0 +1,10 @@
+{
+  "name": "0-container-for-circleci",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "request": "^2.67.0",
+    "runbash": "0.0.1",
+    "waitfor": "^0.1.3"
+  }
+}

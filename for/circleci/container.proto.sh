@@ -10,22 +10,28 @@ function init {
 	BO_deriveSelfDir ___TMP___ "$BO_SELF_BASH_SOURCE"
 	local __BO_DIR__="$___TMP___"
 
-	__BO_DIR__CONTAINER_TRAVIS_CI__="$__BO_DIR__"
+	__BO_DIR__CONTAINER_CIRCLECI__="$__BO_DIR__"
 
 
 	# Automatically install on first use.
-	pushd "$__BO_DIR__CONTAINER_TRAVIS_CI__" > /dev/null
+	pushd "$__BO_DIR__CONTAINER_CIRCLECI__" > /dev/null
 	    if [ ! -e "node_modules" ]; then
-		    BO_log "$VERBOSE" "Installing dependenceis for 'container-for-travis-ci' ..."
+		    BO_log "$VERBOSE" "Installing dependenceis for 'container-for-circleci' ..."
 	    	BO_run_npm install
 	   	fi
 	popd > /dev/null
 
 
 	function setSecureEnvironmentVariables {
-		BO_format "$VERBOSE" "HEADER" "Set travis-ci secure environment variables ..."
+		BO_format "$VERBOSE" "HEADER" "Set circleci secure environment variables ..."
 
-		BO_run_node "$__BO_DIR__CONTAINER_TRAVIS_CI__/setSecureEnvironmentVariables.js" $@
+		# TODO: Look for the token in various places.
+		if [ -z "$Z0_BUILD_CIRCLECI_API_TOKEN" ]; then
+			echo "ERROR: 'Z0_BUILD_CIRCLECI_API_TOKEN' environment variable not set!"
+			exit 1
+		fi
+
+		BO_run_node "$__BO_DIR__CONTAINER_CIRCLECI__/setSecureEnvironmentVariables.js" $@
 
 		BO_format "$VERBOSE" "FOOTER"
 	}
