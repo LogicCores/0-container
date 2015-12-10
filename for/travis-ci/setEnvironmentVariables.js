@@ -39,9 +39,9 @@ function main (callback) {
             existingVariables[key] = obj[key];
         });
         process.argv.slice(2).forEach(function (pair) {
-            pair = pair.split("=");
-            var name = pair.shift();
-            var value = pair.join("=");
+            var pairParts = pair.split("=");
+            var name = pairParts.shift();
+            var value = pairParts.join("=");
             var hash = CRYPTO.createHash('sha256')
                         // TODO: Use configurable seed variables.
                         .update(process.env.PIO_PROFILE_KEY + ":" + process.env.PIO_PROFILE_SECRET + ":" + name + ":" + value)
