@@ -28,10 +28,13 @@ function main (callback) {
         });
         
         if (!doc.env) {
-            doc.env = [];
+            doc.env = {};
+        }
+        if (!doc.env.global) {
+            doc.env.global = [];
         }
         var existingVariables = {};
-        doc.env.forEach(function (obj) {
+        doc.env.global.forEach(function (obj) {
             var key = Object.keys(obj).shift();
             existingVariables[key] = obj[key];
         });
@@ -58,7 +61,7 @@ function main (callback) {
                 }
                 // Value has changed. Remove existing.
                 var indexes = [];
-                doc.env.forEach(function (obj, i) {
+                doc.env.global.forEach(function (obj, i) {
                     var varName = Object.keys(obj).shift();
                     var varValue = obj[varName];
                     if (
@@ -71,7 +74,7 @@ function main (callback) {
                 indexes.sort();
                 indexes.reverse();
                 indexes.forEach(function (index) {
-                    doc.env.splice(index, 1);
+                    doc.env.global.splice(index, 1);
                 });
             }
             changed = true;
@@ -81,11 +84,11 @@ function main (callback) {
 
                     var obj = {};
                     obj["__" + name] = "secure:" + hash + ":" + blob.substring(0, 12);
-                    doc.env.push(obj);
+                    doc.env.global.push(obj);
 
                     obj = {};
                     obj["secure"] = blob;
-                    doc.env.push(obj);
+                    doc.env.global.push(obj);
 
                     return callback(null);
                 });
