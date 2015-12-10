@@ -13,6 +13,13 @@ function init {
 	__BO_DIR__CONTAINER_TRAVIS_CI__="$__BO_DIR__"
 
 
+	# Automatically install on first use.
+    if [ ! -e "node_modules" ]; then
+	    BO_log "$VERBOSE" "Installing dependenceis for 'container-for-travis-ci' ..."
+    	BO_run_npm install
+   	fi
+
+
 	function setEnvironmentVariables {
 		BO_format "$VERBOSE" "HEADER" "Set travis-ci environment variables ..."
 
