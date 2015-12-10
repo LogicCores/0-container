@@ -20,10 +20,10 @@ function init {
    	fi
 
 
-	function setEnvironmentVariables {
-		BO_format "$VERBOSE" "HEADER" "Set travis-ci environment variables ..."
+	function setSecureEnvironmentVariables {
+		BO_format "$VERBOSE" "HEADER" "Set travis-ci secure environment variables ..."
 
-		BO_run_node "$__BO_DIR__CONTAINER_TRAVIS_CI__/setEnvironmentVariables.js" $@
+		BO_run_node "$__BO_DIR__CONTAINER_TRAVIS_CI__/setSecureEnvironmentVariables.js" $@
 
 		BO_format "$VERBOSE" "FOOTER"
 	}
